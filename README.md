@@ -11,6 +11,6 @@ Complex visual effects such as caustics are often produced by light paths contai
 In this paper, we propose a solution to importance sampling specular chains with seed placement using importance probability distributions reconstructed from historical samples. 
 This outperforms state-of-the-art unbiased solutions with up to 40× variance reduction.
 
-
+[Project Page](https://zhiminfan.work/manifoldPG.html)
 
 Code will be available soon.
