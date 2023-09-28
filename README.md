@@ -13,6 +13,8 @@ This outperforms state-of-the-art unbiased solutions with up to 40× variance re
 
 [Project Page](https://zhiminfan.work/manifoldPG.html)
 
-[Paper](https://zhiminfan.work/paper/ManifoldPG_Sept23_small.pdf)
+[Paper (full)](https://zhiminfan.work/paper/ManifoldPG_Sept28.pdf)
+
+[Paper (compressed)](https://zhiminfan.work/paper/ManifoldPG_Sept23_small.pdf)
 
 Code will be available soon.
