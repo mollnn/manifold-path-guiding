@@ -1,6 +1,6 @@
 # Manifold Path Guiding
 
-Zhimin Fan*, Pengpei Hong*, Jie Guo, Changqing Zou, Yanwen Guo, and Ling-Qi Yan
+[Zhimin Fan*](https://zhiminfan.work), [Pengpei Hong*](https://www.pommpy.com), [Jie Guo](http://www.njumeta.com/), [Changqing Zou](https://person.zju.edu.cn/changqingzou), [Yanwen Guo](https://cs.nju.edu.cn/ywguo/index.htm), and [Ling-Qi Yan](https://sites.cs.ucsb.edu/~lingqi/)
 
 _ACM Transactions on Graphics (Proceedings of SIGGRAPH ASIA 2023)_
 
@@ -11,13 +11,10 @@ This outperforms state-of-the-art unbiased solutions with up to 40× variance re
 
 ## Links
 
-[Project Page](https://zhiminfan.work/manifoldPG.html)
-
-[Paper](https://zhiminfan.work/paper/ManifoldPG_Sept28.pdf)
-
-[Supplemental](https://sites.cs.ucsb.edu/~lingqi/publications/supplementary_siga23mpg.zip)
-
-[Video](https://sites.cs.ucsb.edu/~lingqi/publications/video_siga23mpg.mp4)
+[[Project Page]](https://zhiminfan.work/manifoldPG.html)
+[[Paper]](https://zhiminfan.work/paper/ManifoldPG_Sept28.pdf)
+[[Supplemental]](https://sites.cs.ucsb.edu/~lingqi/publications/supplementary_siga23mpg.zip)
+[[Video]](https://sites.cs.ucsb.edu/~lingqi/publications/video_siga23mpg.mp4)
 
 Code will be available soon.
 
