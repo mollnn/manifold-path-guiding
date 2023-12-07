@@ -16,7 +16,29 @@ This outperforms state-of-the-art unbiased solutions with up to 40× variance re
 [[Supplemental]](https://sites.cs.ucsb.edu/~lingqi/publications/supplementary_siga23mpg.zip)
 [[Video]](https://sites.cs.ucsb.edu/~lingqi/publications/video_siga23mpg.mp4)
 
-Code will be available soon.
+**Code will be uploaded soon.**
+
+# Build and run experiments
+
+The source code of our integrator lies in the folder `mitsuba/src/integrators/MPG`.
+
+To run the code, the following steps are required:
+
+1. Clone this repo.
+
+2. Then, prepare the ext libraries. Unzip `mitsuba/ext.zip` into the folder `mitsuba/ext`. (You can also clone the modules following the original compilation instructions of Mitsuba 2.)
+
+3. To generate the project file, run the following commands in the terminal:
+```
+cd mitsuba
+mkdir build
+cd build
+cmake -G "Visual Studio 16 2019" -A x64 ..
+```
+
+4. Open the generated `mitsuba/build/mitsuba.sln` and build in **Release** mode.
+
+After building and compiling the project, you can go to `experiements` folder to run our prepared script for reproduction.
 
 ## Abstract
 
