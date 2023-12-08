@@ -1,10 +1,12 @@
+![ManifoldPG_teaser_720p](img/ManifoldPG_teaser_720p.jpg)
+
 # Manifold Path Guiding
 
-[Zhimin Fan*](https://zhiminfan.work), [Pengpei Hong*](https://www.pommpy.com), [Jie Guo](http://www.njumeta.com/), [Changqing Zou](https://person.zju.edu.cn/changqingzou), [Yanwen Guo](https://cs.nju.edu.cn/ywguo/index.htm), and [Ling-Qi Yan](https://sites.cs.ucsb.edu/~lingqi/)
+[Zhimin Fan*](https://zhiminfan.work) · [Pengpei Hong*](https://www.pommpy.com) · [Jie Guo](http://www.njumeta.com/) · [Changqing Zou](https://person.zju.edu.cn/changqingzou) · [Yanwen Guo](https://cs.nju.edu.cn/ywguo/index.htm) · [Ling-Qi Yan](https://sites.cs.ucsb.edu/~lingqi/) 
+
+*: Joint first author
 
 _ACM Transactions on Graphics (Proceedings of SIGGRAPH ASIA 2023)_
-
-![ManifoldPG_teaser_720p](img/ManifoldPG_teaser_720p.jpg)
 
 We propose a solution to importance sampling specular chains with seed placement using importance probability distributions reconstructed from historical samples. 
 This outperforms state-of-the-art unbiased solutions with up to 40× variance reduction.
@@ -16,7 +18,6 @@ This outperforms state-of-the-art unbiased solutions with up to 40× variance re
 [[Supplemental]](https://sites.cs.ucsb.edu/~lingqi/publications/supplementary_siga23mpg.zip)
 [[Video]](https://sites.cs.ucsb.edu/~lingqi/publications/video_siga23mpg.mp4)
 
-**Code will be uploaded soon.**
 
 # Build and run experiments
 
@@ -60,3 +61,7 @@ articleno = {257},
 numpages = {14},
 }
 ```
+
+## Acknowledgement
+
+We make heavy use of the codebase of [SMS](https://github.com/tizian/specular-manifold-sampling) and [PPG](https://github.com/Tom94/practical-path-guiding). Some scenes in this repo are modified from the test scenes of [SMS](https://github.com/tizian/specular-manifold-sampling) and [Bitterli's resources](https://benedikt-bitterli.me/resources/)
