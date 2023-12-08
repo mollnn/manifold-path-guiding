@@ -1,0 +1,10 @@
+<!-- MI test scene from Eric Veach's thesis - modeled
+     after a file by Steve Marschner (CS667)
+-->
+<scene version="2.0.0">
+	<integrator type="direct">
+		<integer name="emitter_samples" value="0"/>
+		<integer name="bsdf_samples" value="1"/>
+	</integrator>
+    <include filename="include/veach_mis.xml"/>
+</scene>

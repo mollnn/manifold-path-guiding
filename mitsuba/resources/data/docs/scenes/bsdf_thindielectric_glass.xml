@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scene version="2.0.0">
+	<bsdf type="thindielectric" id="object_bsdf">
+            <string name="int_ior" value="water"/>
+            <string name="ext_ior" value="air"/>
+	</bsdf>
+
+    <include filename="include/matpreview.xml"/>
+</scene>

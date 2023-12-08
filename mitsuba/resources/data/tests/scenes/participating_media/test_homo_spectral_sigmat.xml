@@ -1,0 +1,28 @@
+<scene version='2.0.0'>
+
+    <emitter type="envmap">
+		<string name="filename" value="textures/envmap.exr"/>
+	</emitter>
+
+    <include filename="include/test-scene-base.xml"/>
+
+    <medium id="medium1" type="homogeneous">
+        <float name="density" value="10.0"/>
+        <rgb name="sigma_t" value="1, 0.2, 1"/>
+        <rgb name="albedo" value="0.5, 0.5, 0.99"/>
+        <phase type="isotropic" />
+    </medium>
+    <shape type="obj">
+        <string name="filename" value="meshes/sphere.obj"/>
+        <bsdf type="null">
+        </bsdf>
+        <ref id="medium1" name="interior"/>
+    </shape>
+    <shape type="obj">
+        <string name="filename" value="meshes/sphere_base.obj"/>
+        <bsdf type="null">
+        </bsdf>
+        <ref id="medium1" name="interior"/>
+    </shape>
+
+</scene>

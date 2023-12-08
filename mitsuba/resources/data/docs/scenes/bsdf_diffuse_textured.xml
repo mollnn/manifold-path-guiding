@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scene version="2.0.0">
+	<bsdf type="diffuse" id="object_bsdf">
+        <texture name="reflectance" type="bitmap">
+            <string name="filename" value="textures/wood.jpg"/>
+        </texture>
+	</bsdf>
+    <include filename="include/matpreview.xml"/>
+</scene>

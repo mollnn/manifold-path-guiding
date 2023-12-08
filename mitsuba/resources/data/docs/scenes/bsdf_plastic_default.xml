@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scene version="2.0.0">
+	<bsdf type="plastic" id="object_bsdf">
+	</bsdf>
+
+    <include filename="include/matpreview.xml"/>
+</scene>

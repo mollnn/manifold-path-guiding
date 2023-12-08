@@ -1,0 +1,8 @@
+<scene version='2.0.0'>
+    <emitter type="point">
+        <point name="position" x="-4" y="0.0" z="6.0"/>
+        <spectrum name="intensity" value="300"/>
+    </emitter>
+
+    <include filename="fragments/sphere_grid.xml"/>
+</scene>

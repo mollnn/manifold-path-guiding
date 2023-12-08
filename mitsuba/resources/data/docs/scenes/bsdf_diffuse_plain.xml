@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scene version="2.0.0">
+	<bsdf type="diffuse" id="object_bsdf">
+		<rgb name="reflectance" value="0.2, 0.25, 0.7"/>
+	</bsdf>
+    <include filename="include/matpreview.xml"/>
+</scene>
