@@ -1,0 +1,1 @@
+The model ball2new is created by http://www.blendswap.com/user/Delatronic

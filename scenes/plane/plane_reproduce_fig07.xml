@@ -1,0 +1,127 @@
+<scene version="2.0.0">
+    <default name="imgwidth" value="1000" />
+    <default name="imgheight" value="1000" />
+    <default name="crop_offset_x" value="0" />
+    <default name="crop_offset_y" value="0" />
+    <default name="crop_width" value="1000" />
+    <default name="crop_height" value="1000" />
+
+    <default name="max_depth" value="15" />
+    <default name="spp" value="32" />
+    <default name="samples_per_pass" value="1" />
+
+    <default name="train_auto" value="false" />
+    <default name="guide" value="false" />
+    
+    <default name="product_sampling" value="false" />
+
+    <default name="budget_is_time" value="true" />
+    <default name="timeout" value="-1.0" />
+
+	<integrator type="manifold_path_guiding">
+        <integer name="max_depth" value="$max_depth" />
+        <integer name="samples_per_pass" value="$samples_per_pass" />
+        
+        <boolean name="train_auto" value="$train_auto" />
+        <boolean name="guided" value="$guide" />
+        
+        <boolean name="budget_is_time" value="$budget_is_time" />
+        <float name="timeout" value="$timeout" />
+        
+        <boolean name="product_sampling" value="$product_sampling" />
+        
+    </integrator>
+
+    <!-- Camera setup -->
+    <sensor type="perspective">
+        <string name="fov_axis" value="smaller" />
+        <float name="near_clip" value="0.0001" />
+        <float name="far_clip" value="1400000" />
+        <float name="fov" value="36" />
+        <transform name="to_world">
+            <lookat origin="0, 20, 70"
+                target="-5, -10, 0"
+                up="0, 1, 0" />
+            <translate x="3" />
+        </transform>
+        <sampler type="independent">
+            <integer name="sample_count" value="$spp" />
+        </sampler>
+        <film type="hdrfilm" id="film">
+            <integer name="width" value="$imgwidth" />
+            <integer name="height" value="$imgheight" />
+            <rfilter type="gaussian" />
+
+            <integer name="crop_offset_x" value="$crop_offset_x" />
+            <integer name="crop_offset_y" value="$crop_offset_y" />
+            <integer name="crop_width" value="$crop_width" />
+            <integer name="crop_height" value="$crop_height" />
+        </film>
+    </sensor>
+
+    <shape type="rectangle">
+        <transform name="to_world">
+            <scale value="0.02" />
+            <rotate x="1" y="0" z="0" angle="90" />
+
+            <translate x="0" y="120" z="0" />
+            <rotate x="1" angle="60" />
+
+            <rotate y="1" angle="45" />
+        </transform>
+
+        <emitter type="area">
+            <boolean name="caustic_emitter_single" value="true" />
+            <boolean name="caustic_emitter_multi" value="true" />
+            <spectrum name="radiance" value="1000000" />
+        </emitter>
+    </shape>
+
+    <shape type="rectangle">
+        <boolean name="caustic_caster_single" value="true" />
+        <boolean name="caustic_caster_multi" value="true" />
+
+        <bsdf type="normalmap">
+            <bsdf type="conductor">
+                <string name="material" value="Cu" />
+            </bsdf>
+            <string name="filename" value="textures/normalmap_gaussian.exr" />
+        </bsdf>
+
+        <transform name="to_world">
+            <scale x="20" y="20" z="20" />
+            <rotate x="0" y="1" z="0" angle="30" />
+
+            <translate y="10" />
+        </transform>
+    </shape>
+
+    <!-- Ground plane -->
+    <shape type="rectangle">
+        <boolean name="caustic_receiver" value="true" />
+
+        <bsdf type="roughconductor">
+            <float name="alpha" value="0.05" />
+            <spectrum name="specular_reflectance" type="bitmap">
+                <string name="filename" value="textures/[2K]Tiles71/Tiles71_col.jpg" />
+                <transform name="to_uv">
+                    <scale x="40" y="40" />
+                </transform>
+            </spectrum>
+        </bsdf>
+
+        <transform name="to_world">
+            <scale x="400" y="400" z="400" />
+            <rotate x="1" y="0" z="0" angle="-90" />
+        </transform>
+    </shape>
+
+    <emitter type="envmap">
+        <string name="filename" value="textures/sky.exr" />
+        <transform name="to_world">
+        </transform>
+        <float name="scale" value="8" />
+    </emitter>
+
+
+</scene>

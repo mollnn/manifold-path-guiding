@@ -1,0 +1,1 @@
+This scene is modified from the test scene in https://github.com/tizian/specular-manifold-sampling.

@@ -1,0 +1,476 @@
+<scene version="2.0.0">
+	<default name="imgwidth" value="1000" />
+	<default name="imgheight" value="1000" />
+	<default name="crop_offset_x" value="0" />
+	<default name="crop_offset_y" value="0" />
+	<default name="crop_width" value="1000" />
+	<default name="crop_height" value="1000" />
+
+	<default name="max_depth" value="15" />
+	<default name="spp" value="32" />
+	<default name="samples_per_pass" value="1" />
+
+	<default name="train_auto" value="false" />
+	<default name="guide" value="false" />
+
+	<default name="selective" value="false" />
+
+	<default name="budget_is_time" value="true" />
+	<default name="timeout" value="-1.0" />
+
+	<integrator type="manifold_path_guiding">
+		<integer name="max_depth" value="$max_depth" />
+		<integer name="samples_per_pass" value="$samples_per_pass" />
+
+		<boolean name="train_auto" value="$train_auto" />
+		<boolean name="guided" value="$guide" />
+
+		<boolean name="selective" value="$selective" />
+
+		<boolean name="budget_is_time" value="$budget_is_time" />
+		<float name="timeout" value="$timeout" />
+	</integrator>
+
+	<sensor type="perspective">
+		<float name="fov" value="43.5" />
+		<transform name="to_world">
+			<matrix
+				value="0.89903 -0.0125668 -0.437707 0.276962 -3.10776e-009 0.999588 -0.0286988 1.01795 0.437887 0.0258011 0.89866 -5.19292 0 0 0 1" />
+		</transform>
+
+
+		<film type="hdrfilm" id="film">
+			<integer name="width" value="$imgwidth" />
+			<integer name="height" value="$imgheight" />
+			<rfilter type="gaussian" />
+
+			<integer name="crop_offset_x" value="$crop_offset_x" />
+			<integer name="crop_offset_y" value="$crop_offset_y" />
+			<integer name="crop_width" value="$crop_width" />
+			<integer name="crop_height" value="$crop_height" />
+		</film>
+		<sampler type="independent" id="sampler">
+			<integer name="sample_count" value="$spp" />
+		</sampler>
+	</sensor>
+
+
+	<bsdf type="twosided" id="PictureBSDF">
+		<bsdf type="diffuse">
+			<texture name="reflectance" type="bitmap">
+				<string name="filename" value="textures/Abstract.jpg" />
+			</texture>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="FloorBSDF">
+		<bsdf type="diffuse">
+			<texture name="reflectance" type="bitmap">
+				<string name="filename" value="textures/WoodFloor.jpg" />
+			</texture>
+		</bsdf>
+	</bsdf>
+	<bsdf type="dielectric" id="GlassBSDFX">
+		<float name="int_ior" value="1.5" />
+		<float name="ext_ior" value="1" />
+		<!-- <rgb name="specular_transmittance" value="0.7, 0.5, 0.5"/> -->
+	</bsdf>
+	<bsdf type="roughdielectric" id="VaseBSDF">
+		<float name="int_ior" value="1.5" />
+		<float name="ext_ior" value="1" />
+		<float name="alpha" value="0.5" />
+	</bsdf>
+	<bsdf type="twosided" id="LegsBSDF">
+		<bsdf type="diffuse">
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="FruitsBSDF">
+		<bsdf type="diffuse">
+			<rgb name="reflectance" value="0.486897, 0.006799, 0.010756" />
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="CushionsBSDF">
+		<bsdf type="diffuse">
+			<texture name="reflectance" type="bitmap">
+				<string name="filename" value="textures/Fabric.jpg" />
+			</texture>
+		</bsdf>
+	</bsdf>
+	<bsdf type="diffuse" id="WhitePaintBSDF">
+		<rgb name="reflectance" value="1 1 1" />
+	</bsdf>
+	<bsdf type="diffuse" id="SofaBSDF">
+		<rgb name="reflectance" value="1 1 1" />
+	</bsdf>
+	<bsdf type="twosided" id="TwigsBSDF">
+		<bsdf type="diffuse">
+			<rgb name="reflectance" value="0.152325, 0.032489, 0.019341" />
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="WallsBSDF">
+		<bsdf type="diffuse">
+			<rgb name="reflectance" value="1, 1, 1" />
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="RugBSDF">
+		<bsdf type="diffuse">
+			<rgb name="reflectance" value="0.19, 0.0058496, 0.0103978" />
+		</bsdf>
+	</bsdf>
+
+
+	<shape type="obj" id="Glass_0001">
+		<string name="filename" value="models/Mesh019.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="GlassBSDFX" />
+		<boolean name="caustic_caster_multi" value="true" />
+		<boolean name="caustic_bouncer" value="true" />
+
+	</shape>
+	<shape type="obj" id="Glass_0002">
+		<string name="filename" value="models/Mesh033.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+
+		<ref id="GlassBSDFX" />
+		<boolean name="caustic_caster_multi" value="true" />
+		<boolean name="caustic_bouncer" value="true" />
+
+	</shape>
+	<shape type="obj" id="Vase_0001">
+		<string name="filename" value="models/Mesh020.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="VaseBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Vase_0002">
+		<string name="filename" value="models/Mesh016.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="VaseBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Glass_0003">
+		<string name="filename" value="models/Mesh017.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+
+		<ref id="GlassBSDFX" />
+		<boolean name="caustic_caster_multi" value="true" />
+		<boolean name="caustic_bouncer" value="true" />
+
+	</shape>
+	<shape type="obj" id="Glass_0004">
+		<string name="filename" value="models/Mesh014.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+
+		<ref id="GlassBSDFX" />
+		<boolean name="caustic_caster_multi" value="true" />
+		<boolean name="caustic_bouncer" value="true" />
+
+	</shape>
+	<shape type="obj" id="Glass_0005">
+		<string name="filename" value="models/Mesh025.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+
+		<ref id="GlassBSDFX" />
+		<boolean name="caustic_caster_multi" value="true" />
+		<boolean name="caustic_bouncer" value="true" />
+
+	</shape>
+	<shape type="obj" id="Glass_0006">
+		<string name="filename" value="models/Mesh013.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+
+		<ref id="GlassBSDFX" />
+		<boolean name="caustic_caster_multi" value="true" />
+		<boolean name="caustic_bouncer" value="true" />
+
+	</shape>
+	<shape type="obj" id="Glass_0007">
+		<string name="filename" value="models/Mesh021.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+
+		<ref id="GlassBSDFX" />
+		<boolean name="caustic_caster_multi" value="true" />
+		<boolean name="caustic_bouncer" value="true" />
+
+	</shape>
+	<shape type="obj" id="Glass_0008">
+		<string name="filename" value="models/Mesh022.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="GlassBSDFX" />
+		<boolean name="caustic_caster_multi" value="true" />
+		<boolean name="caustic_bouncer" value="true" />
+
+	</shape>
+	<shape type="obj" id="Glass_0009">
+		<string name="filename" value="models/Mesh015.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="GlassBSDFX" />
+		<boolean name="caustic_caster_multi" value="true" />
+		<boolean name="caustic_bouncer" value="true" />
+
+	</shape>
+	<shape type="obj" id="Vase_0003">
+		<string name="filename" value="models/Mesh024.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="VaseBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Vase_0004">
+		<string name="filename" value="models/Mesh026.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="VaseBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Twigs">
+		<string name="filename" value="models/Mesh034.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="TwigsBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Fruits">
+		<string name="filename" value="models/Mesh029.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+
+		<ref id="FruitsBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Glass_0010">
+		<string name="filename" value="models/Mesh018.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="GlassBSDFX" />
+		<boolean name="caustic_caster_multi" value="true" />
+		<boolean name="caustic_bouncer" value="true" />
+
+	</shape>
+	<shape type="obj" id="Picture">
+		<string name="filename" value="models/Mesh032.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 -0.502389 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+
+		<ref id="PictureBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Glass_0011">
+		<string name="filename" value="models/Mesh035.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="GlassBSDFX" />
+		<boolean name="caustic_caster_multi" value="true" />
+		<boolean name="caustic_bouncer" value="true" />
+
+	</shape>
+	<shape type="obj" id="WhitePaint_0001">
+		<string name="filename" value="models/Mesh031.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+
+		<ref id="WhitePaintBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="WhitePaint_0002">
+		<string name="filename" value="models/Mesh012.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+
+		<ref id="WhitePaintBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="WhitePaint_0003">
+		<string name="filename" value="models/Mesh011.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+
+		<ref id="WhitePaintBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="WhitePaint_0004">
+		<string name="filename" value="models/Mesh010.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+
+		<ref id="WhitePaintBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Sofa_0001">
+		<string name="filename" value="models/Mesh028.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="SofaBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Cushions_0001">
+		<string name="filename" value="models/Mesh009.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="CushionsBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Cushions_0002">
+		<string name="filename" value="models/Mesh007.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="CushionsBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Sofa_0002">
+		<string name="filename" value="models/Mesh006.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="SofaBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Sofa_0003">
+		<string name="filename" value="models/Mesh030.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="SofaBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Legs_0001">
+		<string name="filename" value="models/Mesh005.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="LegsBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Cushions_0003">
+		<string name="filename" value="models/Mesh004.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="CushionsBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="WhitePaint_0005">
+		<string name="filename" value="models/Mesh023.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="WhitePaintBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Legs_0002">
+		<string name="filename" value="models/Mesh002.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+		<ref id="LegsBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Floor">
+		<string name="filename" value="models/Mesh008.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 2.30893 0 0 0 0 1" />
+		</transform>
+
+		<ref id="FloorBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+
+	</shape>
+	<shape type="obj" id="Walls">
+		<string name="filename" value="models/Mesh027.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 2.28402 0 0 0 0 1" />
+		</transform>
+
+		<ref id="WallsBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="Rug">
+		<string name="filename" value="models/Mesh003.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+
+		<ref id="RugBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<shape type="obj" id="WhitePaint_0006">
+		<string name="filename" value="models/Mesh001.obj" />
+		<transform name="to_world">
+			<matrix value="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1" />
+		</transform>
+
+		<ref id="WhitePaintBSDF" />
+		<boolean name="caustic_receiver" value="true" />
+	</shape>
+	<emitter type="point">
+		<rgb name="intensity" value="3.3, 3.1, 3" />
+		<boolean name="caustic_emitter_multi" value="true" />
+		<transform name="to_world">
+			<translate x="-2" y="1.5" z="-2.5" />
+			<!-- <translate x="-4.50891" y="1.81441" z="-3.77121" /> -->
+		</transform>
+	</emitter>
+	<emitter type="point">
+		<rgb name="intensity" value="0.02 0.005 0.00" />
+		<boolean name="caustic_emitter_multi" value="true" />
+		<transform name="to_world">
+			<translate x="-2.07" y="1.39" z="-0.11" />
+		</transform>
+	</emitter>
+	<!-- <emitter type="point">
+		<rgb name="intensity" value="0.01 0.01 0.02" />
+		<boolean name="caustic_emitter_multi" value="true"/>
+		<transform name="to_world">
+			<translate x="-2.07" y="1.39" z="-0.12" />
+		</transform>
+	</emitter> -->
+	<emitter type="point">
+		<rgb name="intensity" value="0.00 0.00 0.005" />
+		<boolean name="caustic_emitter_multi" value="true" />
+		<transform name="to_world">
+			<translate x="-2.07" y="1.39" z="-0.13" />
+		</transform>
+	</emitter>
+	<!-- <emitter type="point">
+		<rgb name="intensity" value="0.5, 0.3, 0.3" />
+		<boolean name="caustic_emitter_multi" value="true"/>
+		<transform name="to_world">
+			<translate x="-1.5" y="1" z="-2" />
+		</transform>
+	</emitter> -->
+</scene>

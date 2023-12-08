@@ -1,0 +1,165 @@
+<scene version="2.0.0">
+    <default name="imgwidth" value="1000" />
+    <default name="imgheight" value="1000" />
+    <default name="crop_offset_x" value="0" />
+    <default name="crop_offset_y" value="0" />
+    <default name="crop_width" value="1000" />
+    <default name="crop_height" value="1000" />
+
+    <default name="max_depth" value="15" />
+    <default name="spp" value="32" />
+    <default name="samples_per_pass" value="1" />
+
+    <default name="train_auto" value="false" />
+    <default name="guide" value="false" />
+
+    <default name="budget_is_time" value="true" />
+    <default name="timeout" value="-1.0" />
+
+    <default name="spatial_filter" value="0.1" />
+    <default name="spatial_struct" value="1" />
+    <default name="knn_k" value="-1" />
+    <default name="directional_struct" value="0" />
+
+    <default name="ablation" value="0" />
+
+	<integrator type="manifold_path_guiding">
+        <integer name="max_depth" value="$max_depth" />
+        <integer name="samples_per_pass" value="$samples_per_pass" />
+
+        <boolean name="train_auto" value="$train_auto" />
+        <boolean name="guided" value="$guide" />
+
+        <boolean name="budget_is_time" value="$budget_is_time" />
+        <float name="timeout" value="$timeout" />
+
+        <integer name="spatial_struct" value="$spatial_struct" />
+        <float name="spatial_filter" value="$spatial_filter" />
+        <integer name="knn_k" value="$knn_k" />
+        <integer name="directional_struct" value="$directional_struct" />
+
+        <integer name="ablation" value="$ablation" />
+    </integrator>
+
+    <shape type="rectangle">
+        <emitter type="area">
+            <rgb name="radiance" value="100000, 20000, 10000" />
+            <boolean name="caustic_emitter_multi" value="true" />
+        </emitter>
+
+        <transform name="to_world">
+            <scale x="0.001" y="0.1" z="1" />
+            <rotate x="1" angle="90" />
+            <translate x="1.5" y="3" z="-3" />
+        </transform>
+    </shape>
+
+    <shape type="rectangle">
+        <emitter type="area">
+            <rgb name="radiance" value="0, 10000, 30000" />
+            <boolean name="caustic_emitter_multi" value="true" />
+        </emitter>
+
+        <transform name="to_world">
+            <scale x="0.001" y="0.1" z="1" />
+            <rotate x="1" angle="90" />
+            <translate x="-3" y="3" z="0" />
+        </transform>
+    </shape>
+
+    <shape type="rectangle">
+        <emitter type="area">
+            <rgb name="radiance" value="0, 10000, 30000" />
+            <boolean name="caustic_emitter_multi" value="true" />
+        </emitter>
+
+        <transform name="to_world">
+            <scale x="0.001" y="0.1" z="1" />
+            <rotate x="1" angle="90" />
+            <translate x="3" y="3" z="0" />
+        </transform>
+    </shape>
+
+    <shape type="rectangle">
+        <emitter type="area">
+            <rgb name="radiance" value="50000, 20000, 10000" />
+            <boolean name="caustic_emitter_multi" value="true" />
+        </emitter>
+
+        <transform name="to_world">
+            <scale x="0.001" y="0.1" z="1" />
+            <rotate x="1" angle="90" />
+            <translate x="0" y="3" z="2" />
+        </transform>
+    </shape>
+
+
+    <shape type="obj">
+        <string name="filename" value="meshes/ground2.obj" />
+        <boolean name="caustic_receiver" value="true" />
+        <bsdf type="roughconductor">
+            <float name="alpha" value="0.2" />
+            <string name="distribution" value="ggx" />
+            <string name="material" value="Ag" />
+        </bsdf>
+        <transform name="to_world">
+            <scale value="2" />
+        </transform>
+    </shape>
+
+
+    <shape type="obj">
+        <string name="filename" value="meshes/ball1new.obj" />
+        <boolean name="caustic_caster_multi" value="true" />
+        <boolean name="caustic_bouncer" value="true" />
+        <bsdf type="dielectric">
+        </bsdf>
+        <transform name="to_world">
+            <scale value="1.0" />
+        </transform>
+    </shape>
+
+
+    <shape type="obj">
+        <string name="filename" value="meshes/ball2new.obj" />
+        <boolean name="caustic_receiver" value="true" />
+        <bsdf type="roughconductor">
+            <float name="alpha" value="0.2" />
+            <string name="distribution" value="ggx" />
+            <string name="material" value="Cu" />
+        </bsdf>
+        <transform name="to_world">
+            <scale value="1.0" />
+        </transform>
+    </shape>
+
+
+    <film type="hdrfilm" id="film">
+        <integer name="width" value="$imgwidth" />
+        <integer name="height" value="$imgheight" />
+        <rfilter type="gaussian" />
+
+        <integer name="crop_offset_x" value="$crop_offset_x" />
+        <integer name="crop_offset_y" value="$crop_offset_y" />
+        <integer name="crop_width" value="$crop_width" />
+        <integer name="crop_height" value="$crop_height" />
+    </film>
+    <sampler type="independent" id="sampler">
+        <integer name="sample_count" value="$spp" />
+    </sampler>
+
+    <sensor type="perspective">
+        <string name="fov_axis" value="smaller" />
+        <float name="fov" value="35" />
+
+        <transform name="to_world">
+            <rotate x="0.0" y="1.0" z="0.0" angle="180.00" />
+            <rotate x="1.0" y="0.0" z="0.0" angle="-47" />
+            <rotate x="0.0" y="0.0" z="1.0" angle="-0.73" />
+            <translate x="0" y="6" z="6" />
+        </transform>
+
+        <ref id="sampler" />
+        <ref id="film" />
+    </sensor>
+</scene>
