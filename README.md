@@ -19,7 +19,7 @@ This outperforms state-of-the-art unbiased solutions with up to 40× variance re
 [[Video]](https://sites.cs.ucsb.edu/~lingqi/publications/video_siga23mpg.mp4)
 
 
-# Build and run experiments
+## Build and run experiments
 
 The source code of our integrator lies in the folder `mitsuba/src/integrators/MPG`.
 
