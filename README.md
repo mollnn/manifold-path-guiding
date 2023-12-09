@@ -2,7 +2,7 @@
 
 # Manifold Path Guiding
 
-[Zhimin Fan*](https://zhiminfan.work) · [Pengpei Hong*](https://www.pommpy.com) · [Jie Guo](http://www.njumeta.com/) · [Changqing Zou](https://person.zju.edu.cn/changqingzou) · [Yanwen Guo](https://cs.nju.edu.cn/ywguo/index.htm) · [Ling-Qi Yan](https://sites.cs.ucsb.edu/~lingqi/) 
+[Zhimin Fan*](https://zhiminfan.work) · [Pengpei Hong*](https://pommpy.net) · [Jie Guo](http://www.njumeta.com/) · [Changqing Zou](https://person.zju.edu.cn/changqingzou) · [Yanwen Guo](https://cs.nju.edu.cn/ywguo/index.htm) · [Ling-Qi Yan](https://sites.cs.ucsb.edu/~lingqi/) 
 
 *: Joint first author
 
