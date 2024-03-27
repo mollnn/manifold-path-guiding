@@ -48,17 +48,24 @@ Complex visual effects such as caustics are often produced by light paths contai
 ## Cite
 
 ```
-@article{Fan23MPG,
-title={Manifold Path Guiding for Importance Sampling Specular Chains},
-author={Fan, Zhimin and Hong, Pengpei and Guo, Jie and Zou, Changqing and Guo, Yanwen and Yan, Ling-Qi},
-journal={ACM Trans. Graph.},
-volume={42},
-number={6},
-year={2023},
-month={Dec},
+@article{Fan23ManifoldPG,
+author = {Fan, Zhimin and Hong, Pengpei and Guo, Jie and Zou, Changqing and Guo, Yanwen and Yan, Ling-Qi},
+title = {Manifold Path Guiding for Importance Sampling Specular Chains},
+year = {2023},
 issue_date = {December 2023},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {42},
+number = {6},
+issn = {0730-0301},
+url = {https://doi.org/10.1145/3618360},
+doi = {10.1145/3618360},
+abstract = {Complex visual effects such as caustics are often produced by light paths containing multiple consecutive specular vertices (dubbed specular chains), which pose a challenge to unbiased estimation in Monte Carlo rendering. In this work, we study the light transport behavior within a sub-path that is comprised of a specular chain and two non-specular separators. We show that the specular manifolds formed by all the sub-paths could be exploited to provide coherence among sub-paths. By reconstructing continuous energy distributions from historical and coherent sub-paths, seed chains can be generated in the context of importance sampling and converge to admissible chains through manifold walks. We verify that importance sampling the seed chain in the continuous space reaches the goal of importance sampling the discrete admissible specular chain. Based on these observations and theoretical analyses, a progressive pipeline, manifold path guiding, is designed and implemented to importance sample challenging paths featuring long specular chains. To our best knowledge, this is the first general framework for importance sampling discrete specular chains in regular Monte Carlo rendering. Extensive experiments demonstrate that our method outperforms state-of-the-art unbiased solutions with up to 40 \texttimes{} variance reduction, especially in typical scenes containing long specular chains and complex visibility.},
+journal = {ACM Trans. Graph.},
+month = {dec},
 articleno = {257},
 numpages = {14},
+keywords = {caustics, importance sampling, specular chain}
 }
 ```
 
